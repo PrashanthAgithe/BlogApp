@@ -1,0 +1,81 @@
+###
+//create author
+post http://localhost:4000/author-api/new-user
+Content-Type: application/json
+
+
+{
+    "userType":"author",
+    "username":"kiran",
+    "password":"kiran",
+    "email":"kiran@mail.com"
+}
+
+
+###
+//login author
+post http://localhost:4000/author-api/login
+Content-Type: application/json
+
+
+{
+    "userType":"author",
+    "username":"kiran",
+    "password":"kiran"   
+}
+
+### 
+//add new article by author
+post http://localhost:4000/author-api/article
+Content-Type: application/json
+
+{
+      "articleId": "{{$timestamp}}",
+      "title": "Fundamentals of javaScript",
+      "category": "programming",
+      "content": "javaScript is a high-level language...",
+      "dateOfCreation": "{{$datetime iso8601}}",
+      "dateOfModification": "{{$datetime iso8601}}",
+      "username": "kiran",
+      "comments": [],
+      "status": true
+}
+
+
+### 
+//update article by author
+put http://localhost:4000/author-api/article
+Content-Type: application/json
+
+{
+      "articleId": "1709728924",
+      "title": "Fundamentals of javaScript",
+      "category": "programming",
+      "content": "javaScript",
+      "dateOfCreation": "2024-03-04T12:59:02.880Z",
+      "dateOfModification": "{{$datetime iso8601}}",
+      "username": "kiran",
+      "comments": [],
+      "status": true
+}
+
+### 
+//soft delete an article by article id
+put http://localhost:4000/author-api/article/1709728924
+Content-Type: application/json
+
+{
+      "articleId": "1709728924",
+      "title": "Fundamentals of javaScript",
+      "category": "programming",
+      "content": "javaScript is a high-level language...",
+      "dateOfCreation": "2024-03-04T12:59:02.880Z",
+      "dateOfModification": "2024-03-04T13:38:27.411Z",
+      "username": "kiran",
+      "comments": [],
+      "status": true
+}
+
+###
+//get article of only authors
+get http://localhost:4000/author-api/articles/kiran
