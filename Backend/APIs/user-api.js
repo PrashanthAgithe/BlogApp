@@ -51,7 +51,7 @@ userApp.post("/login",expressAsyncHandler(async (req, res) => {
         //create jwt token
         const signedToken = jwt.sign({ username: dbuser.username },process.env.SECRET_KEY,{ expiresIn: 20 });
         //send res
-        res.send({message: "login success",token: signedToken,user: dbuser,});
+        res.send({message:"login success",token:signedToken,user:dbuser,});
       }
     }
   })

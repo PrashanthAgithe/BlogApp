@@ -5,6 +5,8 @@ import Home from './components/Home/Home';
 import ErrorLayout from './components/ErrorLayout/ErrorLayout';
 import SignUp from './components/SignUp/SignUp';
 import SignIn from './components/SignIn/SignIn';
+import UserProfile from './components/UserProfile/UserProfile';
+
 function App() {
   let router=createBrowserRouter([
     {
@@ -23,13 +25,17 @@ function App() {
         {
           path:'signin',
           element:<SignIn />
+        },
+        {
+          path:'user-profile',
+          element:<UserProfile />
         }
       ]
     }
   ])
   return (
     <div className="App">
-      <RouterProvider router={router} />
+        <RouterProvider router={router} />
     </div>
   );
 }

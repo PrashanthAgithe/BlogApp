@@ -22,7 +22,7 @@ authorApp.post('/new-user',expressAsyncHandler(async(req,res)=>{
     //check for duplicate user based on username
     const dbuser=await authorscollection.findOne({username:newUser.username})
     if(dbuser!==null){
-        res.send({message:"User alredy existed!"})
+        res.send({message:"Author already existed!"})
     }else{
         //hash the password
         newUser.password=await bcryptjs.hash(newUser.password,6)

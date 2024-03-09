@@ -1,7 +1,16 @@
 import React from 'react'
 import './Navbar.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux'
+import { resetState } from '../../redux/slices/userAuthorSlice';
 function Navbar() {
+  let {islogedin,currentUser}=useSelector(state=>state.userAuthoruserAuthorLoginReducer)
+  let dispatch=useDispatch()
+  function signout(){
+    //removing token from the local storage
+    localStorage.removeItem('token');
+    dispatch(resetState())
+  }
   return (
     <div className='navbar'>
       <div className="icon">
@@ -9,9 +18,16 @@ function Navbar() {
       </div>
       <div>
         <ul>
+          {(islogedin==false)?(
+          <>
           <li><NavLink className='nav-item' to=''>Home</NavLink></li>
           <li><NavLink className='nav-item' to='signup'>SignUp</NavLink></li>
           <li><NavLink className='nav-item' to='signin'>SignIn</NavLink></li>
+          </>
+          ):(
+            <li><NavLink className='nav-item' to='signin' onClick={signout}>Welcome {currentUser.username} SignOut</NavLink></li>
+          )
+          }
         </ul>
       </div>
     </div>

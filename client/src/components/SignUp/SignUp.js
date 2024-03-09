@@ -9,14 +9,22 @@ function SignUp() {
   let [err,seterr]=useState('');
   let navigate=useNavigate();
   async function handlesubmitform(userobj){
-    //make http post req
-    let res=await axios.post('http://localhost:4000/user-api/new-user',userobj)
-    if(res.data.message==="User created"){
-      navigate('/signin');
+    if(userobj.userType=='user'){
+      //make http post req
+      let res=await axios.post('http://localhost:4000/user-api/new-user',userobj)
+      if(res.data.message==="User created"){
+        navigate('/signin');
+      }else{
+        seterr(res.data.message);
+      }
     }else{
-      seterr(res.data.message);
+      let res=await axios.post('http://localhost:4000/author-api/new-user',userobj)
+      if(res.data.message==="Author created"){
+        navigate('/signin');
+      }else{
+        seterr(res.data.message);
+      }
     }
-    //console.log(res);
   }
   return (
     <div className='signup'>
