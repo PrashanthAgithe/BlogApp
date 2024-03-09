@@ -9,6 +9,7 @@ function SignUp() {
   return (
     <div className='signup'>
       <form onSubmit={handleSubmit(handlesubmitform)}>
+      <h1 className='signuptitle'>Signup</h1>
         <div className='usertype'>
           <div className='user'>
             <input type="radio" name="usertype" id="author" value={'author'} {...register('userType',{required:true})}/>

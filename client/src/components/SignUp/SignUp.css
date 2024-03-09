@@ -1,7 +1,7 @@
 .signup{
   width:clamp(300px,50%,450px);
   background-color: rgb(40, 40, 40);
-  margin:8px auto;
+  margin:50px auto;
   padding:10px;
   border-radius: 10px;
   border: 1.6px solid whitesmoke;
@@ -56,4 +56,12 @@ button:active{
 .userlabel{
   color:whitesmoke;
   font-size: 20px;
+}
+.signuptitle{
+  font-size: 36px;
+  font-weight: 700;
+  background: -webkit-linear-gradient(left,rgb(235, 255, 11),rgb(255, 136, 24));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin:20px 0px;
 }

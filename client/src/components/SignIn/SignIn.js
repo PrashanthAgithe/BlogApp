@@ -7,8 +7,9 @@ function SignIn() {
     console.log(userobj);
   }
   return (
-    <div className='signin'>
+    <div className='signup'>
       <form onSubmit={handleSubmit(handlesubmitform)}>
+        <h1 className='signuptitle'>Signin</h1>
         <div className='usertype'>
           <div className='user'>
             <input type="radio" name="usertype" id="author" value={'author'} {...register('userType',{required:true})}/>
@@ -31,7 +32,7 @@ function SignIn() {
           <label for="password" className='inputlabel'>Password</label>
           <input type="password" name="password" id="password" placeholder='Please enter password' {...register('password',{required:true})}/>
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" className='login'>Login</button>
       </form>
     </div>
   )
