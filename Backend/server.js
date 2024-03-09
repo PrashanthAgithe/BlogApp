@@ -3,6 +3,11 @@ const exp=require('express');
 const app=exp()
 app.use(exp.json())
 require('dotenv').config()
+
+const path=require('path')
+//deploy react build in this server.js
+app.use(exp.static(path.join(__dirname,'../client/build'))) 
+
 const mc=require('mongodb').MongoClient;
 
 mc.connect(process.env.DB_URL)
@@ -29,6 +34,11 @@ const adminApp=require('./APIs/admin-api')
 app.use('/user-api',userApp)
 app.use('/author-api',authorApp)
 app.use('/admin-api',adminApp)
+
+//deals with the refresh
+app.use((req,res,next)=>{
+    res.sendFile(path.join(__dirname,'../client/build/index.html'))
+})
 
 //error handling middleware
 app.use((err,req,res,next)=>{

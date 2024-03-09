@@ -1,15 +1,28 @@
 import React from 'react'
 import './SignUp.css'
 import {useForm} from 'react-hook-form'
+import axios from 'axios'
+import { useState } from 'react'
+import {useNavigate} from 'react-router-dom'
 function SignUp() {
   let {register,handleSubmit,formState:{errors}}=useForm()
-  function handlesubmitform(userobj){
-    console.log(userobj);
+  let [err,seterr]=useState('');
+  let navigate=useNavigate();
+  async function handlesubmitform(userobj){
+    //make http post req
+    let res=await axios.post('http://localhost:4000/user-api/new-user',userobj)
+    if(res.data.message==="User created"){
+      navigate('/signin');
+    }else{
+      seterr(res.data.message);
+    }
+    //console.log(res);
   }
   return (
     <div className='signup'>
       <form onSubmit={handleSubmit(handlesubmitform)}>
       <h1 className='signuptitle'>Signup</h1>
+      {err.length!==0 && <p style={{color:'red'}}>{err}</p>}
         <div className='usertype'>
           <div className='user'>
             <input type="radio" name="usertype" id="author" value={'author'} {...register('userType',{required:true})}/>
