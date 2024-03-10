@@ -34,7 +34,7 @@ function SignUp() {
         <div className='usertype'>
           <div className='user'>
             <input type="radio" name="usertype" id="author" value={'author'} {...register('userType',{required:true})}/>
-            <label className='userlabel' for="author">Autor</label>
+            <label className='userlabel' for="author">Author</label>
           </div>
           <div className='user'>
             <input type="radio" name="usertype" id="user" value={'user'} {...register('userType',{required:true})}/>

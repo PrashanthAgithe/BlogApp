@@ -1,0 +1,21 @@
+.authorsnav{
+  width:50%;
+  min-width: 450px;
+  background-color:green ;
+  margin: 10px auto;
+  height:70px;
+  border-radius: 12px;
+  display :flex;
+  justify-content: center;
+  align-items: center;
+}
+.authorsul{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width:90%;
+}
+.authorli{
+  font-size: 24px;
+  color:rgb(118, 184, 250);
+}

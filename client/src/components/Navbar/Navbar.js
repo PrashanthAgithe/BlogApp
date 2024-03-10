@@ -25,7 +25,10 @@ function Navbar() {
           <li><NavLink className='nav-item' to='signin'>SignIn</NavLink></li>
           </>
           ):(
-            <li><NavLink className='nav-item' to='signin' onClick={signout}>Welcome {currentUser.username} SignOut</NavLink></li>
+            <>
+            <h1 className='welcome'>Welcome , <h1 className='username'>{currentUser.username}</h1></h1>
+            <li><NavLink className='nav-item' to='signin' onClick={signout}> SignOut</NavLink></li>
+            </>
           )
           }
         </ul>

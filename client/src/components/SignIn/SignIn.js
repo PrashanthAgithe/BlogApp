@@ -8,7 +8,7 @@ function SignIn() {
   let {register,handleSubmit,formState:{errors}}=useForm()
   let dispatch=useDispatch()
   let navigate=useNavigate()
-  let {islogedin,errorOccurred,errMsg}=useSelector(state=>state.userAuthoruserAuthorLoginReducer)
+  let {islogedin,currentUser,errorOccurred,errMsg}=useSelector(state=>state.userAuthoruserAuthorLoginReducer)
   
   function handlesubmitform(userobj){
     console.log(userobj);
@@ -17,7 +17,11 @@ function SignIn() {
 
   useEffect(()=>{
     if(islogedin===true){
-      navigate('/user-profile')
+      if(currentUser.userType==='user'){
+        navigate('/user-profile')
+      }else{
+        navigate('/author-profile')
+      }
     }
   },[islogedin])
   return (
@@ -27,7 +31,7 @@ function SignIn() {
         <div className='usertype'>
           <div className='user'>
             <input type="radio" name="usertype" id="author" value={'author'} {...register('userType',{required:true})}/>
-            <label className='userlabel' for="author">Autor</label>
+            <label className='userlabel' for="author">Author</label>
           </div>
           <div className='user'>
             <input type="radio" name="usertype" id="user" value={'user'} {...register('userType',{required:true})}/>

@@ -50,7 +50,7 @@ authorApp.post('/login',expressAsyncHandler(async(req,res)=>{
         res.send({message:"Invalid password"})
        }else{
     //create jwt token
-        const signedToken=jwt.sign({username:dbuser.username},process.env.SECRET_KEY,{expiresIn:20})
+        const signedToken=jwt.sign({username:dbuser.username},process.env.SECRET_KEY,{expiresIn:'1d'})
     //send res
         res.send({message:"login success",token:signedToken,user:dbuser})
        }
@@ -64,7 +64,7 @@ authorApp.post('/article',verifyToken,expressAsyncHandler(async(req,res)=>{
     //post to artciles collection
     await articlescollection.insertOne(newArticle)
     //send res
-    res.send({message:"New article created"})
+    res.send({message:"article created"})
 }))
 
 

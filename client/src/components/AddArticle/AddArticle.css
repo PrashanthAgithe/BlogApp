@@ -1,0 +1,28 @@
+.addarticle{
+  width:50%;
+  margin:15px auto;
+  border-radius: 12px;
+  padding:10px;
+  background-color: rgb(40, 40, 40);
+  color:whitesmoke;
+  min-width: 450px;
+}
+.addarticle div{
+  text-align: left;
+  margin:20px auto;
+}
+.addarticle label{
+  text-align: left;
+  display:inline;
+  margin:5px 10px;
+}
+textarea{
+  width:80%;
+  border-radius: 8px;
+  /* margin:5px auto; */
+}
+.textarea {
+  width:100%;
+  display:flex;
+  justify-content: center;
+}
