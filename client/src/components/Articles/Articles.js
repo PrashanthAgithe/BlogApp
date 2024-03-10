@@ -46,13 +46,18 @@ function Articles() {
   }
   return (
     <div>
-      <h1>Articles:{articlesList.length}</h1>
+      { currentUser.userType==='user' &&
+        <div className="articleheadingdiv">
+        <h1 className='articleheading'>Articles</h1>
+        </div>
+      }
       <div class="articlescontainer">
         {
           articlesList.map((value,index)=>(
             <div className='article'>
               <h2>{value.title}</h2>
-              <button onClick={()=>display_single_article(value)}>read</button>
+              <h3>Catagory:{value.category}</h3>
+              <button onClick={()=>display_single_article(value)}>Read article</button>
             </div>
             ))
         }

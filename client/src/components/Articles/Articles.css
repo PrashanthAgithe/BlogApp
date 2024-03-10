@@ -1,0 +1,33 @@
+.article{
+  width:100%;
+  color:white;
+  padding: 8px;
+  background-color: rgb(67, 66, 66);
+  border-radius: 12px;
+  border: 1.8px solid white;
+  max-height: 170px;
+}
+.articlescontainer{
+  display: grid;
+  width:80%;
+  margin:20px auto;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  min-height: 70vh;
+}
+.articleheading{
+  font-size: 34px;
+  font-weight: 800;
+  background: -webkit-linear-gradient(left,rgba(10, 176, 63, 0.938),rgba(146, 247, 44, 0.911));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin:7px;
+}
+.articleheadingdiv{
+  background-color: rgb(31, 31, 31);
+  width:235px;
+  border-radius: 50px;
+  border: 2px solid white;
+  margin:20px auto;
+  padding:8px;
+}

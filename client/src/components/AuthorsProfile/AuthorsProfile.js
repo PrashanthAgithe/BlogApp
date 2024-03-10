@@ -7,8 +7,16 @@ function AuthorsProfile() {
     <div>
       <div class="authorsnav">
         <ul className='authorsul'>
-          <li><NavLink className='nav-item authorli' to='articles'>Articles</NavLink></li>
-          <li><NavLink className='nav-item authorli' to='new-article'>Add New article</NavLink></li>
+          <li>
+            <div className="articleheadingdiv">
+              <NavLink className='nav-item authorli' to='articles'><h1 className='articleheading'>Articles</h1></NavLink>
+            </div>
+          </li>
+          <li>
+            <div className="articleheadingdiv">
+              <NavLink className='nav-item authorli' to='new-article'><h1 className='articleheading'>New Article</h1></NavLink>
+            </div>
+          </li>
         </ul>
       </div>
       <Outlet />

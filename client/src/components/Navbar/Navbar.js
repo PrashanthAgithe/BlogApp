@@ -26,7 +26,7 @@ function Navbar() {
           </>
           ):(
             <>
-            <h1 className='welcome'>Welcome , <h1 className='username'>{currentUser.username}</h1></h1>
+            <h1 className='welcome'>Welcome &lt;<h1 className='username'>{currentUser.username}</h1>&gt; </h1>
             <li><NavLink className='nav-item' to='signin' onClick={signout}> SignOut</NavLink></li>
             </>
           )
