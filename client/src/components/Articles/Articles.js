@@ -13,7 +13,6 @@ function Articles() {
       headers:{Authorization:`Bearer ${token}`}
     })
     let res=await axiosWithToken.get(`http://localhost:4000/author-api/articles/${currentUser.username}`)
-    console.log(res);
     setarticles(res.data.payload);
   }
   async function getarticlesofallauthor(){
@@ -22,7 +21,6 @@ function Articles() {
       headers:{Authorization:`Bearer ${token}`}
     })
     let res=await axiosWithToken.get(`http://localhost:4000/user-api/articles`)
-    console.log(res);
     setarticles(res.data.payload);
   } 
   useEffect(()=>{
@@ -44,20 +42,23 @@ function Articles() {
       navigate(`../article/${article.articleId}`,{state:article})
     }
   }
+  function ISOtoUTC(iso) {
+    let date = new Date(iso).getUTCDate();
+    let month = new Date(iso).getUTCMonth()+1;
+    let year = new Date(iso).getUTCFullYear();
+    return `${date}/${month}/${year}`;
+  }
+
   return (
     <div>
-      { currentUser.userType==='user' &&
-        <div className="articleheadingdiv">
-        <h1 className='articleheading'>Articles</h1>
-        </div>
-      }
       <div class="articlescontainer">
         {
           articlesList.map((value,index)=>(
             <div className='article'>
-              <h2>{value.title}</h2>
-              <h3>Catagory:{value.category}</h3>
-              <button onClick={()=>display_single_article(value)}>Read article</button>
+              <h2 className='articletitle'>{value.title}</h2>
+              <h3>Catagory &lt;{value.category}&gt;</h3>
+              <button onClick={()=>display_single_article(value)} className='readarticle'>Read article</button>
+              <p>Created On:{ISOtoUTC(value.dateOfCreation)}</p>
             </div>
             ))
         }

@@ -3,7 +3,7 @@ import './AddArticle.css'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
-import { axiosWithToken } from '../../axiosWithToken'
+import { createAxiosWithToken } from '../../axiosWithToken'
 import { useNavigate } from "react-router-dom";
 function AddArticle() {
   let {register,handleSubmit}=useForm()
@@ -18,9 +18,9 @@ function AddArticle() {
     article.username = currentUser.username;
     article.comments = [];
     article.status = true;
+    const axiosWithToken=createAxiosWithToken()
    //make HTTP post req
    let res=await axiosWithToken.post('http://localhost:4000/author-api/article',article)
-   console.log(res)
    if(res.data.message==='article created'){
     navigate('/author-profile/articles')
    }else{

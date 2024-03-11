@@ -74,7 +74,8 @@ authorApp.put('/article',verifyToken,expressAsyncHandler(async(req,res)=>{
     const modifiedArticle=req.body;
     //update by article id
    let result= await articlescollection.updateOne({articleId:modifiedArticle.articleId},{$set:{...modifiedArticle}})
-    res.send({message:"Article modified"})
+   let article=await articlescollection.findOne({articleId:modifiedArticle.articleId})
+    res.send({message:"Article modified",payload:article})
 }))
 
 //delete an article by article ID

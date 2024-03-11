@@ -49,12 +49,12 @@ function App() {
           element:<AuthorsProfile />,
           children:[
             {
-              path:'new-article',
-              element:<AddArticle />
-            },
-            {
               path:'articles',
               element:<Articles />
+            },
+            {
+              path:'new-article',
+              element:<AddArticle />
             },
             {
               path:'article/:articleId',

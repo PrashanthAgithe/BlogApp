@@ -1,7 +1,6 @@
 //create redux slice
 import {createSlice,createAsyncThunk} from '@reduxjs/toolkit'
 import axios from 'axios'
-
 // make htttp req using redux-thunk middleware
 export const userAuthorLoginThunk =createAsyncThunk('user-author-login',async(userobj,thunkapi)=>{
   try{

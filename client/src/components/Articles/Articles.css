@@ -2,7 +2,7 @@
   width:100%;
   color:white;
   padding: 8px;
-  background-color: rgb(67, 66, 66);
+  background-color: rgb(40, 40, 40);
   border-radius: 12px;
   border: 1.8px solid white;
   max-height: 170px;
@@ -18,7 +18,7 @@
 .articleheading{
   font-size: 34px;
   font-weight: 800;
-  background: -webkit-linear-gradient(left,rgba(10, 176, 63, 0.938),rgba(146, 247, 44, 0.911));
+  background: -webkit-linear-gradient(left,rgba(102, 237, 24, 0.938),rgba(154, 236, 72, 0.911));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin:7px;
@@ -30,4 +30,9 @@
   border: 2px solid white;
   margin:20px auto;
   padding:8px;
+}
+.articletitle{
+  background: -webkit-linear-gradient(left,rgb(72, 203, 247),rgb(0, 255, 221));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

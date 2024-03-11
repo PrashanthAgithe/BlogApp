@@ -1,0 +1,43 @@
+.articleheader{
+  display:flex;
+  width:100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.articlebody{
+  padding:15px;
+  width:60%;
+  margin:15px auto;
+  background-color: rgb(40, 40, 40);
+  border-radius:12px;
+  border: 1.8px solid white;
+}
+.articletimings{
+  color:white;
+  display: flex;
+}
+.articletimings p{
+  margin:5px;
+}
+.articlecontent p{
+  margin:10px;
+  text-align: left;
+  color:white;
+}
+.comments{
+  color:white;
+  width:100%;
+  background-color: rgb(75, 74, 74);
+  border-radius: 12px;
+  padding:12px;
+}
+.comments h2{
+  padding: 5px;
+}
+.comment h3{
+  text-align: left;
+}
+.comment p{
+  text-align: left;
+  font-size: 18px;
+}

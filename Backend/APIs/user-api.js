@@ -49,7 +49,7 @@ userApp.post("/login",expressAsyncHandler(async (req, res) => {
         res.send({ message: "Invalid password" });
       } else {
         //create jwt token
-        const signedToken = jwt.sign({ username: dbuser.username },process.env.SECRET_KEY,{ expiresIn: 20 });
+        const signedToken = jwt.sign({ username: dbuser.username },process.env.SECRET_KEY,{ expiresIn: '1d' });
         //send res
         res.send({message:"login success",token:signedToken,user:dbuser,});
       }
@@ -70,11 +70,12 @@ userApp.get("/articles",verifyToken,expressAsyncHandler(async (req, res) => {
 userApp.post("/comment/:articleId",verifyToken,expressAsyncHandler(async (req, res) => {
     //get user comment obj
     const userComment = req.body;
-    const articleIdu=req.params.articleId;
+    const articleIdu=Number(req.params.articleId);
     //insert userComment object to comments array of article by id
     await articlescollection.updateOne({ articleId: articleIdu},{ $addToSet: { comments: userComment } }
     );
-    res.send({ message: "Comment posted" });
+    let article=await articlescollection.findOne({articleId:articleIdu})
+    res.send({ message: "Comment posted" ,payload:article.comments});
   })
 );
 

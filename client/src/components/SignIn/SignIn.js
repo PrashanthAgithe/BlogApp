@@ -11,7 +11,6 @@ function SignIn() {
   let {islogedin,currentUser,errorOccurred,errMsg}=useSelector(state=>state.userAuthoruserAuthorLoginReducer)
   
   function handlesubmitform(userobj){
-    console.log(userobj);
     dispatch(userAuthorLoginThunk(userobj));
   }
 
@@ -20,7 +19,7 @@ function SignIn() {
       if(currentUser.userType==='user'){
         navigate('/user-profile')
       }else{
-        navigate('/author-profile')
+        navigate('/author-profile/articles')
       }
     }
   },[islogedin])
