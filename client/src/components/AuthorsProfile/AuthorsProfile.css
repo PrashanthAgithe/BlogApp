@@ -13,3 +13,19 @@
   align-items: center;
   width:90%;
 }
+@media screen and (max-width:1060px){
+  .authorsnav{
+    min-width: 70%;
+  }
+  .authorsul{
+    justify-content: space-evenly;
+  }
+}
+@media screen and (max-width:760px){
+  .authorsnav{
+    min-width: 95%;
+  }
+  .authorsul{
+    justify-content: space-evenly;
+  }
+}

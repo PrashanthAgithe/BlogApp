@@ -3,6 +3,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: rgb(40, 40, 40);
+  width:100%;
 }
 li{
   list-style-type: none;
@@ -48,4 +49,21 @@ ul{
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   /* margin:9px 10px; */
+}
+
+@media screen and (max-width:530px){
+  .icon{
+    font-size: 8.8vw;
+  }
+  .nav-item{
+    font-size: 4.5vw;
+  }
+  .active{
+    font-size: 4.8vw;
+    text-decoration: underline;
+  }
+  ul{
+    min-width: 65vw;
+    margin:10px;
+  }
 }

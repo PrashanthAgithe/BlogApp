@@ -72,8 +72,8 @@ function ArticlebyId() {
           <h2>Comments</h2>
           {currentUser.userType==='user' && 
           <form onSubmit={handleSubmit(postcomment)}>
-            <div class="commentsinput">
-              <input type="text" placeholder='Write a comment..' {...register('comment')}/>
+            <div>
+              <input type="text" className='commentsinput' placeholder='Write a comment..' {...register('comment')}/>
               <button>Add comment</button>
             </div>
           </form>

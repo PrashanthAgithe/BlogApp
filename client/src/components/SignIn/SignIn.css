@@ -1,11 +1,13 @@
 .usertype{
   display:flex;
+  justify-content: space-evenly;
   margin: auto;
 }
 .user{
   display: flex;
+  justify-content: center;
   align-items: center;
-  margin:5px 20px;
+  margin:5px 0px;
   width:28%;
 }
 input{
@@ -16,7 +18,7 @@ input{
 }
 .inputlabel{
   text-align: left;
-  margin:10px 50px;
+  margin:10px 10%;
 }
 input[type=radio]{
   accent-color:rgb(39, 230, 5);

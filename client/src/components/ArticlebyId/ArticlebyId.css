@@ -41,3 +41,11 @@
   text-align: left;
   font-size: 18px;
 }
+@media screen and (max-width:530px){
+  .articlebody{
+    width: 95%;
+  }
+  .commentsinput{
+    width:90%;
+  }
+}

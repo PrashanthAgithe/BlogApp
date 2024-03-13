@@ -43,11 +43,11 @@ function SignIn() {
         </div>
         <div className='inputs'>
           <label for="username" className='inputlabel'>Username</label>
-          <input type="text" name="username" id="username" placeholder='Please enter username' {...register('username',{required:true})}/>
+          <input type="text" name="username" id="username" placeholder='Enter username' {...register('username',{required:true})}/>
         </div>
         <div className='inputs'>
           <label for="password" className='inputlabel'>Password</label>
-          <input type="password" name="password" id="password" placeholder='Please enter password' {...register('password',{required:true})}/>
+          <input type="password" name="password" id="password" placeholder='Enter password' {...register('password',{required:true})}/>
         </div>
         <button type="submit" className='login'>Login</button>
       </form>

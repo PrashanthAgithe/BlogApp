@@ -13,7 +13,7 @@
   margin:20px auto;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 20px;
-  min-height: 70vh;
+  min-height: 60vh;
 }
 .articleheading{
   font-size: 34px;
@@ -35,4 +35,13 @@
   background: -webkit-linear-gradient(left,rgb(72, 203, 247),rgb(0, 255, 221));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+@media screen and (max-width:530px){
+  .articleheading{
+    font-size: 4.4vw;
+  }
+  .articleheadingdiv{
+    width:37vw;
+  }
 }

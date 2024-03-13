@@ -19,10 +19,19 @@
 textarea{
   width:80%;
   border-radius: 8px;
-  /* margin:5px auto; */
+  font-size: 18px;
 }
 .textarea {
   width:100%;
   display:flex;
   justify-content: center;
+}
+select{
+  padding:5px;
+  border-radius: 8px;
+}
+@media screen and (max-width:500px) {
+  .addarticle{
+    min-width:95%;
+  }
 }
