@@ -4,9 +4,11 @@ import { useSelector } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import { createAxiosWithToken } from '../../axiosWithToken'
 import './ArticlebyId.css'
+
 function ArticlebyId() {
   let {state}=useLocation()
-  let [commentsList,setcomments]=useState(state.comments)
+  let [commentsList,setcomments]=useState(state.comments.slice().reverse())
+  //let [status,setstatus]=useState(state.status);
   let navigate=useNavigate()
   let {register,handleSubmit}=useForm()
   let {islogedin,currentUser}=useSelector(state=>state.userAuthoruserAuthorLoginReducer)
@@ -27,10 +29,15 @@ function ArticlebyId() {
     comment.username=currentUser.username;
     const axiosWithToken=createAxiosWithToken();
     let res=await axiosWithToken.post(`http://localhost:4000/user-api/comment/${state.articleId}`,comment);
-    console.log(res.data);
-    setcomments(res.data.payload);
+    setcomments(res.data.payload.slice().reverse());
   }
-  console.log(commentsList);
+  async function deleteOrRestoreArticle(){
+    let article={...state};
+    const axiosWithToken=createAxiosWithToken()
+    delete article._id;
+    let res=await axiosWithToken.put(`http://localhost:4000/author-api/article/${state.articleId}`,article)
+    navigate(`../article/${state.articleId}`,{state:res.data.payload})
+  }
   function ISOtoUTC(iso) {
     let date = new Date(iso).getUTCDate();
     let month = new Date(iso).getUTCMonth()+1;
@@ -47,7 +54,10 @@ function ArticlebyId() {
           currentUser.userType==='author' && 
           <div>
             <button style={{backgroundColor:'orange'}} onClick={()=>edit(true)}>Edit</button>
-            <button style={{backgroundColor:'red'}}>Delete</button>
+            { state.status==true?
+              <button style={{backgroundColor:'red'}} onClick={()=>deleteOrRestoreArticle()}>Delete</button>:
+              <button onClick={()=>deleteOrRestoreArticle()}>Restore</button>
+            }
           </div>
         }
         </div>
