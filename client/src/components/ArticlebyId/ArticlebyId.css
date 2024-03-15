@@ -20,6 +20,7 @@
   margin:5px;
 }
 .articlecontent p{
+  white-space: pre-line;
   margin:10px;
   text-align: left;
   color:white;
@@ -35,17 +36,50 @@
   padding: 5px;
 }
 .comment h3{
+  display: flex;
+  align-items: center;
   text-align: left;
 }
 .comment p{
   text-align: left;
   font-size: 18px;
+  margin-left: 15px;
 }
-@media screen and (max-width:530px){
+.edit{
+  background-color: orange;
+  padding-left:8px;
+  
+}
+.delete{
+  background-color: red;
+}
+.btn{
+  border: 2px solid white;
+  margin: 5px;
+  font-size: 24px;
+  padding:5px;
+}
+.editdeletebtn{
+  display:flex;
+}
+@media screen and (max-width:750px){
+  .articlebody{
+    width:80%;
+  }
+}
+@media screen and (max-width:570px){
   .articlebody{
     width: 95%;
   }
   .commentsinput{
     width:90%;
+  }
+  .btn{
+    font-size: 4.2vw;
+    padding:6px;
+    border-radius: 8px;
+  }
+  .articletitle{
+    font-size: 1.5em;
   }
 }

@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import { createAxiosWithToken } from '../../axiosWithToken'
 import './ArticlebyId.css'
-
+import { FaEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
+import { MdRestore } from "react-icons/md";
+import { IoPersonCircle } from "react-icons/io5";
 function ArticlebyId() {
   let {state}=useLocation()
   let [commentsList,setcomments]=useState(state.comments.slice().reverse())
@@ -38,6 +41,12 @@ function ArticlebyId() {
     let res=await axiosWithToken.put(`http://localhost:4000/author-api/article/${state.articleId}`,article)
     navigate(`../article/${state.articleId}`,{state:res.data.payload})
   }
+  useEffect(()=>{
+    if(islogedin===false){
+      alert("plz login to view articles");
+      navigate('/signin');
+    }
+  },[islogedin])
   function ISOtoUTC(iso) {
     let date = new Date(iso).getUTCDate();
     let month = new Date(iso).getUTCMonth()+1;
@@ -52,11 +61,11 @@ function ArticlebyId() {
         <h1 className='articletitle'>{state.title}</h1>
         { 
           currentUser.userType==='author' && 
-          <div>
-            <button style={{backgroundColor:'orange'}} onClick={()=>edit(true)}>Edit</button>
+          <div className='editdeletebtn'>
+            <button className='edit btn' onClick={()=>edit(true)}><FaEdit /></button>
             { state.status==true?
-              <button style={{backgroundColor:'red'}} onClick={()=>deleteOrRestoreArticle()}>Delete</button>:
-              <button onClick={()=>deleteOrRestoreArticle()}>Restore</button>
+              <button className='delete btn' onClick={()=>deleteOrRestoreArticle()}><MdDelete /></button>:
+              <button onClick={()=>deleteOrRestoreArticle()}><MdRestore /></button>
             }
           </div>
         }
@@ -83,7 +92,7 @@ function ArticlebyId() {
           commentsList.map((value)=>
             <div className='comment'>
               <hr></hr>
-              <h3>{value.username}</h3>
+              <h3><IoPersonCircle /> {value.username}</h3>
               <p>{value.comment}</p>
             </div>
           )

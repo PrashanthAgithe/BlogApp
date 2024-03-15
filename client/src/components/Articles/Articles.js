@@ -32,6 +32,7 @@ function Articles() {
       }
     }else{
       alert("plz login to view articles");
+      navigate('/signin');
     }
   },[islogedin])
   let navigate=useNavigate()
