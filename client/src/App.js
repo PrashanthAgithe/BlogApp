@@ -1,5 +1,7 @@
 import { createBrowserRouter,RouterProvider} from 'react-router-dom'
 import './App.css';
+import { lazy, Suspense } from 'react';
+import Loading from './components/Loading/Loading';
 import RouteLayout from './components/RouteLayout/RouteLayout';
 import Home from './components/Home/Home';
 import ErrorLayout from './components/ErrorLayout/ErrorLayout';
@@ -7,10 +9,9 @@ import SignUp from './components/SignUp/SignUp';
 import SignIn from './components/SignIn/SignIn';
 import UserProfile from './components/UserProfile/UserProfile';
 import AuthorsProfile from './components/AuthorsProfile/AuthorsProfile';
-import AddArticle from './components/AddArticle/AddArticle';
-import Articles from './components/Articles/Articles';
-import ArticlebyId from './components/ArticlebyId/ArticlebyId';
-
+const Articles=lazy(()=>import('./components/Articles/Articles'))
+const AddArticle=lazy(()=>import('./components/AddArticle/AddArticle'))
+const ArticlebyId=lazy(()=>import('./components/ArticlebyId/ArticlebyId'))
 function App() {
   let router=createBrowserRouter([
     {
@@ -40,7 +41,7 @@ function App() {
             },
             {
               path:'article/:articleId',
-              element:<ArticlebyId />
+              element:<Suspense fallback={<Loading />}><ArticlebyId /></Suspense>
             }
           ]
         },
@@ -50,15 +51,15 @@ function App() {
           children:[
             {
               path:'articles',
-              element:<Articles />
+              element:<Suspense fallback={<Loading />}><Articles /></Suspense>
             },
             {
               path:'new-article',
-              element:<AddArticle />
+              element:<Suspense fallback={<Loading />}><AddArticle /></Suspense>
             },
             {
               path:'article/:articleId',
-              element:<ArticlebyId />
+              element:<Suspense fallback={<Loading />}><ArticlebyId /></Suspense>
             }
           ]
         }
