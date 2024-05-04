@@ -8,23 +8,98 @@ const path=require('path')
 //deploy react build in this server.js
 app.use(exp.static(path.join(__dirname,'../client/build'))) 
 
-const mc=require('mongodb').MongoClient;
-
-mc.connect(process.env.DB_URL)
-.then(client=>{
-    //get db obj
-    const dbobj=client.db('blogdb')
-    //get collection obj
-    const userscollection=dbobj.collection('userscollection')
-    const articlescollection=dbobj.collection('articlescollection')
-    const authorscollection=dbobj.collection('authorscollection')
-    //sharing colelction 
-    app.set('userscollection',userscollection)
-    app.set('articlescollection',articlescollection)
-    app.set('authorscollection',authorscollection)
+// const mc=require('mongodb').MongoClient;
+const mongoose=require('mongoose')
+mongoose.connect(process.env.DB_URL)
+.then(()=>{
+    // //get db obj
+    // const dbobj=client.db('blogdb')
+    // //get collection obj
+    // const userscollection=dbobj.collection('userscollection')
+    // const articlescollection=dbobj.collection('articlescollection')
+    // const authorscollection=dbobj.collection('authorscollection')
+    // //sharing colelction 
+    // app.set('userscollection',userscollection)
+    // app.set('articlescollection',articlescollection)
+    // app.set('authorscollection',authorscollection)
     console.log("DB connection success")
 })
 .catch(err=>console.log(err))
+const userscollection=mongoose.model('userscollection',{
+    userType:{
+      type:String,
+      required:true,
+    },
+    username:{
+      type:String,
+      required:true,
+    },
+    password:{
+      type:String,
+      required:true,
+    },
+    email:{
+      type:String,
+      required:true,
+    }
+  })
+const authorscollection=mongoose.model('authorscollection',{
+    userType:{
+      type:String,
+      required:true,
+    },
+    username:{
+      type:String,
+      required:true,
+    },
+    password:{
+      type:String,
+      required:true,
+    },
+    email:{
+      type:String,
+      required:true,
+    }
+  })
+  const articlescollection=mongoose.model('articlescollection',{
+    title: {
+      type:String,
+      required:true,
+    },
+    category: {
+      type:String,
+      required:true,
+    },
+    content: {
+      type:String,
+      required:true,
+    },
+    dateOfCreation: {
+      type:Date,
+      required:true,
+    },
+    dateOfModification: {
+      type:Date,
+      required:true,
+    },
+    articleId: {
+      type:Number,
+      required:true,
+    },
+    username: {
+      type:String,
+      required:true,
+    },
+    comments: {
+      type:Object,
+      required:true,
+    },
+    status: {
+      type:Boolean,
+      required:true,
+    }
+  })
+  module.exports={userscollection,authorscollection,articlescollection};
 
 //importing API routes
 const userApp=require('./APIs/user-api')

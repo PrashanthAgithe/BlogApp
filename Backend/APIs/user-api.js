@@ -7,26 +7,25 @@ const jwt = require("jsonwebtoken");
 const verifyToken=require('../middlewares/verifyToken')
 require("dotenv").config();
 
-let userscollection;
-let articlescollection;
-userApp.use((req, res, next) => {
-  userscollection = req.app.get("userscollection");
-  articlescollection = req.app.get("articlescollection");
-  next();
-});
+// userApp.use((req, res, next) => {
+  //   userscollection = req.app.get("userscollection");
+  //   articlescollection = req.app.get("articlescollection");
+  //   next();
+  // });
+const dbobj=require('../server')
 
 //user registration route
 userApp.post("/new-user",expressAsyncHandler(async (req, res) => {
     //get user resource from client
     const newUser = req.body;
     //check for duplicate user based on username
-    const dbuser = await userscollection.findOne({ username: newUser.username });
+    const dbuser = await dbobj.userscollection.findOne({ username: newUser.username });
     if (dbuser !== null) {
       res.send({ message: "User already existed" });
     } else {
       newUser.password = await bcryptjs.hash(newUser.password, 5);
       //create user
-      await userscollection.insertOne(newUser);
+      await dbobj.userscollection.insertMany([newUser]);
       //send res
       res.send({ message: "User created" });
     }
@@ -37,7 +36,7 @@ userApp.post("/new-user",expressAsyncHandler(async (req, res) => {
 userApp.post("/login",expressAsyncHandler(async (req, res) => {
     //get usercred obj 
     const userCred = req.body;
-    const dbuser = await userscollection.findOne({
+    const dbuser = await dbobj.userscollection.findOne({
       username: userCred.username,
     });
     if (dbuser === null) {
@@ -60,11 +59,11 @@ userApp.post("/login",expressAsyncHandler(async (req, res) => {
 //get articles of all authors
 userApp.get("/articles",verifyToken,expressAsyncHandler(async (req, res) => {
     //get all articles
-    let articlesList = await articlescollection.find({ status: true }).toArray();
+    let articlesList = await dbobj.articlescollection.find({ status: true });
     //send res
     res.send({ message: "articles", payload: articlesList });
   })
-);
+);1
 
 //post comments for an arcicle by atricle id
 userApp.post("/comment/:articleId",verifyToken,expressAsyncHandler(async (req, res) => {
@@ -72,9 +71,9 @@ userApp.post("/comment/:articleId",verifyToken,expressAsyncHandler(async (req, r
     const userComment = req.body;
     const articleIdu=Number(req.params.articleId);
     //insert userComment object to comments array of article by id
-    await articlescollection.updateOne({ articleId: articleIdu},{ $addToSet: { comments: userComment } }
+    await dbobj.articlescollection.updateOne({ articleId: articleIdu},{ $addToSet: { comments: userComment } }
     );
-    let article=await articlescollection.findOne({articleId:articleIdu})
+    let article=await dbobj.articlescollection.findOne({articleId:articleIdu})
     res.send({ message: "Comment posted" ,payload:article.comments});
   })
 );
