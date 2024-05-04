@@ -8,6 +8,9 @@ const path=require('path')
 //deploy react build in this server.js
 app.use(exp.static(path.join(__dirname,'../client/build'))) 
 
+app.use("/",(req,res)=>{
+    res.send("server is running.");
+})
 // const mc=require('mongodb').MongoClient;
 const mongoose=require('mongoose')
 mongoose.connect(process.env.DB_URL)
