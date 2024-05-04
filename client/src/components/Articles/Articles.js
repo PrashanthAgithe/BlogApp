@@ -2,9 +2,11 @@ import React, { useEffect } from 'react'
 import './Articles.css'
 import axios from 'axios'
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { resetState } from '../../redux/slices/userAuthorSlice'
 function Articles() {
+  let dispatch=useDispatch();
   let [articlesList,setarticles]=useState([])
   let {islogedin,currentUser}=useSelector(state=>state.userAuthoruserAuthorLoginReducer)
   async function getarticlesofauthor(){
@@ -21,7 +23,13 @@ function Articles() {
       headers:{Authorization:`Bearer ${token}`}
     })
     let res=await axiosWithToken.get(`http://localhost:4000/user-api/articles`)
-    setarticles(res.data.payload);
+    console.log(res);
+    if(res.data.payload==='jwt expired'){
+      localStorage.removeItem('token');
+      dispatch(resetState())
+    }else {
+      setarticles(res.data.payload);
+    }
   } 
   useEffect(()=>{
     if(islogedin===true){
@@ -32,6 +40,7 @@ function Articles() {
       }
     }else{
       alert("plz login to view articles");
+      localStorage.removeItem('token');
       navigate('/signin');
     }
   },[islogedin])

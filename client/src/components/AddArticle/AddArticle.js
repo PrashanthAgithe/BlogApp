@@ -1,6 +1,6 @@
 import React from 'react'
 import './AddArticle.css'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
 import { createAxiosWithToken } from '../../axiosWithToken'
@@ -9,7 +9,7 @@ function AddArticle() {
   let {register,handleSubmit}=useForm()
   let [err, setErr] = useState("");
   let navigate = useNavigate();
-  let {currentUser}=useSelector(state=>state.userAuthoruserAuthorLoginReducer)
+  let {currentUser,islogedin}=useSelector(state=>state.userAuthoruserAuthorLoginReducer)
 
   const postNewArticle = async (article) => {
     article.dateOfCreation = new Date();
@@ -26,9 +26,18 @@ function AddArticle() {
    }else{
     setErr(res.data.message)
     alert("please login to post article");
+    localStorage.removeItem('token');
+    navigate('/signin');
    }
   };
-
+  useEffect(()=>{
+    if(islogedin===true){
+    }else{
+      alert("plz login to post article");
+      localStorage.removeItem('token');
+      navigate('/signin');
+    }
+  },[islogedin])
   return (
     <div className='addarticle'>
       <form onSubmit={handleSubmit(postNewArticle)} >

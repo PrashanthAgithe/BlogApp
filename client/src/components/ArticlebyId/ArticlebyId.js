@@ -43,7 +43,8 @@ function ArticlebyId() {
   }
   useEffect(()=>{
     if(islogedin===false){
-      alert("plz login to view articles");
+      alert("plz login to view article");
+      localStorage.removeItem('token');
       navigate('/signin');
     }
   },[islogedin])
@@ -65,7 +66,7 @@ function ArticlebyId() {
             <button className='edit btn' onClick={()=>edit(true)}><FaEdit /></button>
             { state.status==true?
               <button className='delete btn' onClick={()=>deleteOrRestoreArticle()}><MdDelete /></button>:
-              <button onClick={()=>deleteOrRestoreArticle()}><MdRestore /></button>
+              <button className='btn' onClick={()=>deleteOrRestoreArticle()}><MdRestore /></button>
             }
           </div>
         }

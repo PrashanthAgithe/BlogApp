@@ -12,6 +12,12 @@
   border-radius:12px;
   border: 1.8px solid white;
 }
+.articletitle{
+  background: -webkit-linear-gradient(left,rgb(72, 203, 247),rgb(0, 255, 221));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .articletimings{
   color:white;
   display: flex;
@@ -48,7 +54,6 @@
 .edit{
   background-color: orange;
   padding-left:8px;
-  
 }
 .delete{
   background-color: red;

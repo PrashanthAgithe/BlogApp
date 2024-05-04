@@ -37,7 +37,7 @@ function App() {
           children:[
             {
               path:'',
-              element:<Articles />
+              element:<Suspense fallback={<Loading />}><Articles /></Suspense>
             },
             {
               path:'article/:articleId',
