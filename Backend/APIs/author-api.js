@@ -4,7 +4,7 @@ const authorApp=exp.Router();
 const expressAsyncHandler=require('express-async-handler')
 const bcryptjs=require('bcryptjs')
 const jwt=require('jsonwebtoken')
-const verifyToken=require('../Middlewares/verifyToken')
+const verifyToken=require('../middlewares/verifyToken')
 
 let authorscollection;
 let articlescollection;

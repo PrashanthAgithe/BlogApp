@@ -4,7 +4,7 @@ const userApp = exp.Router();
 const bcryptjs = require("bcryptjs");
 const expressAsyncHandler = require("express-async-handler");
 const jwt = require("jsonwebtoken");
-const verifyToken=require('../Middlewares/verifyToken')
+const verifyToken=require('../middlewares/verifyToken')
 require("dotenv").config();
 
 let userscollection;
