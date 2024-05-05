@@ -1,6 +1,8 @@
 //create express app
 const exp=require('express');
 const app=exp()
+const cors = require('cors');
+app.use(cors());
 app.use(exp.json())
 require('dotenv').config()
 

@@ -22,7 +22,7 @@ function Articles() {
     const axiosWithToken=axios.create({
       headers:{Authorization:`Bearer ${token}`}
     })
-    let res=await axiosWithToken.get(`http://localhost:4000/user-api/articles`)
+    let res=await axiosWithToken.get(`https://blogapp-wywh.onrender.com/user-api/articles`)
     console.log(res);
     if(res.data.payload==='jwt expired'){
       localStorage.removeItem('token');
