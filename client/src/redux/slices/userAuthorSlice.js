@@ -5,7 +5,7 @@ import axios from 'axios'
 export const userAuthorLoginThunk =createAsyncThunk('user-author-login',async(userobj,thunkapi)=>{
   try{
     if(userobj.userType==='user'){
-      let res=await axios.post('https://blogapp-wywh.onrender.com/user-api/login',userobj)
+      let res=await axios.post('http://localhost:4000/user-api/login',userobj)
       if(res.data.message==='login success'){
         //store token in the local storage
         localStorage.setItem('token',res.data.token);
@@ -15,7 +15,7 @@ export const userAuthorLoginThunk =createAsyncThunk('user-author-login',async(us
       return res.data;
     }
     if(userobj.userType==='author'){
-      let res=await axios.post('https://blogapp-wywh.onrender.com/author-api/login',userobj)
+      let res=await axios.post('http://localhost:4000/author-api/login',userobj)
       if(res.data.message==='login success'){
         //store token in the local storage
         localStorage.setItem('token',res.data.token);

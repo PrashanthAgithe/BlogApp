@@ -20,7 +20,7 @@ function AddArticle() {
     article.status = true;
     const axiosWithToken=createAxiosWithToken()
    //make HTTP post req
-   let res=await axiosWithToken.post('https://blogapp-wywh.onrender.com/author-api/article',article)
+   let res=await axiosWithToken.post('http://localhost:4000/author-api/article',article)
    if(res.data.message==='article created'){
     navigate('/author-profile/articles')
    }else{

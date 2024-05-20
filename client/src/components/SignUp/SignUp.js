@@ -11,14 +11,14 @@ function SignUp() {
   async function handlesubmitform(userobj){
     if(userobj.userType=='user'){
       //make http post req
-      let res=await axios.post('https://blogapp-wywh.onrender.com/user-api/new-user',userobj)
+      let res=await axios.post('http://localhost:4000/user-api/new-user',userobj)
       if(res.data.message==="User created"){
         navigate('/signin');
       }else{
         seterr(res.data.message);
       }
     }else{
-      let res=await axios.post('https://blogapp-wywh.onrender.com/author-api/new-user',userobj)
+      let res=await axios.post('http://localhost:4000/author-api/new-user',userobj)
       if(res.data.message==="Author created"){
         navigate('/signin');
       }else{
