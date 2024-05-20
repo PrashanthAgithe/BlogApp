@@ -8,7 +8,7 @@ import { resetState } from '../../redux/slices/userAuthorSlice'
 function Articles() {
   let dispatch=useDispatch();
   let [articlesList,setarticles]=useState([])
-  let {islogedin,currentUser}=useSelector(state=>state.userAuthoruserAuthorLoginReducer)
+  let {islogedin,currentUser}=useSelector(state=>state.userAuthorLoginReducer)
   async function getarticlesofauthor(){
     let token=localStorage.getItem('token');
     const axiosWithToken=axios.create({

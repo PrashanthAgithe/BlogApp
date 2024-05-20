@@ -8,8 +8,7 @@ function SignIn() {
   let {register,handleSubmit,formState:{errors}}=useForm()
   let dispatch=useDispatch()
   let navigate=useNavigate()
-  let {islogedin,currentUser,errorOccurred,errMsg}=useSelector(state=>state.userAuthoruserAuthorLoginReducer)
-  
+  let {islogedin,currentUser,errorOccurred,errMsg}=useSelector(state=>state.userAuthorLoginReducer)
   function handlesubmitform(userobj){
     dispatch(userAuthorLoginThunk(userobj));
   }
@@ -27,6 +26,7 @@ function SignIn() {
     <div className='signup'>
       <form onSubmit={handleSubmit(handlesubmitform)}>
         <h1 className='signuptitle'>Signin</h1>
+        {errorOccurred && <p style={{color:'red'}}>{errMsg}</p>}
         <div className='usertype'>
           <div className='user'>
             <input type="radio" name="usertype" id="author" value={'author'} {...register('userType',{required:true})}/>
@@ -37,17 +37,26 @@ function SignIn() {
             <label className='userlabel' for="user">User</label>
           </div>
           <div className='user'>
-            <input type="radio" name="usertype" id="admin" value={'admin'} {...register('userType',{required:true})}/>
+            <input type="radio" name="usertype" id="admin" value={'admin'} {...register('userType',{required:true})} disabled/>
             <label className='userlabel' for="admin">Admin</label>
           </div>
         </div>
+          {
+            errors.userType?.type=='required' && <p style={{color:'red'}}>Please select User Type</p>
+          }
         <div className='inputs'>
           <label for="username" className='inputlabel'>Username</label>
           <input type="text" name="username" id="username" placeholder='Enter username' {...register('username',{required:true})}/>
+          {
+            errors.username?.type=='required' && <p style={{color:'red'}}>Username Required</p>
+          }
         </div>
         <div className='inputs'>
           <label for="password" className='inputlabel'>Password</label>
           <input type="password" name="password" id="password" placeholder='Enter password' {...register('password',{required:true})}/>
+          {
+            errors.password?.type=='required' && <p style={{color:'red'}}>Password Required</p>
+          }
         </div>
         <button type="submit" className='login'>Login</button>
       </form>

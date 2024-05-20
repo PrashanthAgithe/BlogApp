@@ -14,7 +14,7 @@ function ArticlebyId() {
   //let [status,setstatus]=useState(state.status);
   let navigate=useNavigate()
   let {register,handleSubmit}=useForm()
-  let {islogedin,currentUser}=useSelector(state=>state.userAuthoruserAuthorLoginReducer)
+  let {islogedin,currentUser}=useSelector(state=>state.userAuthorLoginReducer)
   let [onedit,setonedit]=useState(false);
   function edit(value){
     setonedit(value)

@@ -1,7 +1,7 @@
 .signup{
-  width:clamp(280px,50%,450px);
+  width:clamp(320px,60%,450px);
   background-color: rgb(40, 40, 40);
-  margin:50px auto;
+  margin:70px auto;
   padding:10px;
   border-radius: 10px;
   border: 1.6px solid whitesmoke;

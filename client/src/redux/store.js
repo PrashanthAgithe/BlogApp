@@ -10,7 +10,7 @@ const persistconfig={
 const persisteduserAuthorReducer=persistReducer(persistconfig,userAuthorReducer)
 export const store=configureStore({
     reducer:{
-        userAuthoruserAuthorLoginReducer:persisteduserAuthorReducer
+        userAuthorLoginReducer:persisteduserAuthorReducer
     }
 })
 export const persistor=persistStore(store);

@@ -9,7 +9,7 @@ function AddArticle() {
   let {register,handleSubmit}=useForm()
   let [err, setErr] = useState("");
   let navigate = useNavigate();
-  let {currentUser,islogedin}=useSelector(state=>state.userAuthoruserAuthorLoginReducer)
+  let {currentUser,islogedin}=useSelector(state=>state.userAuthorLoginReducer)
 
   const postNewArticle = async (article) => {
     article.dateOfCreation = new Date();

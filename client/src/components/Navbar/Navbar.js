@@ -4,7 +4,7 @@ import { NavLink} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { resetState } from '../../redux/slices/userAuthorSlice';
 function Navbar() {
-  let {islogedin,currentUser}=useSelector(state=>state.userAuthoruserAuthorLoginReducer)
+  let {islogedin,currentUser}=useSelector(state=>state.userAuthorLoginReducer)
   let dispatch=useDispatch()
   function signout(){
     //removing token from the local storage
