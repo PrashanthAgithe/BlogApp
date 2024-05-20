@@ -8,7 +8,7 @@ require('dotenv').config()
 
 const path=require('path')
 //deploy react build in this server.js
-app.use(exp.static(path.join(__dirname,'../client/build'))) 
+// app.use(exp.static(path.join(__dirname,'../client/build'))) 
 
 app.use("/helloworld",(req,res)=>{
     res.send("Hello World");
@@ -116,9 +116,9 @@ app.use('/author-api',authorApp)
 app.use('/admin-api',adminApp)
 
 //deals with the refresh
-app.use((req,res,next)=>{
-    res.sendFile(path.join(__dirname,'../client/build/index.html'))
-})
+// app.use((req,res,next)=>{
+//     res.sendFile(path.join(__dirname,'../client/build/index.html'))
+// })
 
 //error handling middleware
 app.use((err,req,res,next)=>{
