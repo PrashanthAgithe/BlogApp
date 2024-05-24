@@ -14,7 +14,7 @@ function Articles() {
     const axiosWithToken=axios.create({
       headers:{Authorization:`Bearer ${token}`}
     })
-    let res=await axiosWithToken.get(`http://localhost:4000/author-api/articles/${currentUser.username}`)
+    let res=await axiosWithToken.get(`https://blogapp-wywh.onrender.com/author-api/articles/${currentUser.username}`)
     setarticles(res.data.payload);
   }
   async function getarticlesofallauthor(){
@@ -22,8 +22,7 @@ function Articles() {
     const axiosWithToken=axios.create({
       headers:{Authorization:`Bearer ${token}`}
     })
-    let res=await axiosWithToken.get(`http://localhost:4000/user-api/articles`)
-    console.log(res);
+    let res=await axiosWithToken.get(`https://blogapp-wywh.onrender.com/user-api/articles`)
     if(res.data.payload==='jwt expired'){
       localStorage.removeItem('token');
       dispatch(resetState())

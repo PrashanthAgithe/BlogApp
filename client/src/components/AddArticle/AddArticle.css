@@ -35,4 +35,7 @@ select{
   .addarticle{
     min-width:95%;
   }
+  textarea{
+    font-size: 15px;
+  }
 }

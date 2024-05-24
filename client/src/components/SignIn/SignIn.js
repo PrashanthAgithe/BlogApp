@@ -1,18 +1,18 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {useForm} from 'react-hook-form'
 import { useSelector, useDispatch } from 'react-redux'
-import { userAuthorLoginThunk } from '../../redux/slices/userAuthorSlice'
+import { resetState, userAuthorLoginThunk } from '../../redux/slices/userAuthorSlice'
 import './SignIn.css'
 import { useNavigate } from 'react-router-dom'
+import Loading from '../Loading/Loading'
 function SignIn() {
   let {register,handleSubmit,formState:{errors}}=useForm()
   let dispatch=useDispatch()
   let navigate=useNavigate()
-  let {islogedin,currentUser,errorOccurred,errMsg}=useSelector(state=>state.userAuthorLoginReducer)
+  let {isPending,islogedin,currentUser,errorOccurred,errMsg}=useSelector(state=>state.userAuthorLoginReducer)
   function handlesubmitform(userobj){
     dispatch(userAuthorLoginThunk(userobj));
   }
-
   useEffect(()=>{
     if(islogedin===true){
       if(currentUser.userType==='user'){
@@ -20,6 +20,8 @@ function SignIn() {
       }else{
         navigate('/author-profile/articles')
       }
+    }else{
+      dispatch(resetState())
     }
   },[islogedin])
   return (
@@ -58,7 +60,11 @@ function SignIn() {
             errors.password?.type=='required' && <p style={{color:'red'}}>Password Required</p>
           }
         </div>
-        <button type="submit" className='login'>Login</button>
+        <button type="submit" className='login'>
+          {
+            isPending ? <Loading />:'Login'
+          }
+        </button>
       </form>
     </div>
   )

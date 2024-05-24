@@ -25,20 +25,20 @@ function ArticlebyId() {
     delete Modifiedarticle._id;
     Modifiedarticle.dateOfModification=new Date()
     const axiosWithToken=createAxiosWithToken();
-    let res=await axiosWithToken.put('http://localhost:4000/author-api/article',Modifiedarticle);
+    let res=await axiosWithToken.put('https://blogapp-wywh.onrender.com/author-api/article',Modifiedarticle);
     navigate(`../article/${state.articleId}`,{state:res.data.payload})
   }
   async function postcomment(comment){
     comment.username=currentUser.username;
     const axiosWithToken=createAxiosWithToken();
-    let res=await axiosWithToken.post(`http://localhost:4000/user-api/comment/${state.articleId}`,comment);
+    let res=await axiosWithToken.post(`https://blogapp-wywh.onrender.com/user-api/comment/${state.articleId}`,comment);
     setcomments(res.data.payload.slice().reverse());
   }
   async function deleteOrRestoreArticle(){
     let article={...state};
     const axiosWithToken=createAxiosWithToken()
     delete article._id;
-    let res=await axiosWithToken.put(`http://localhost:4000/author-api/article/${state.articleId}`,article)
+    let res=await axiosWithToken.put(`https://blogapp-wywh.onrender.com/author-api/article/${state.articleId}`,article)
     navigate(`../article/${state.articleId}`,{state:res.data.payload})
   }
   useEffect(()=>{

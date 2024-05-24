@@ -66,3 +66,8 @@ button:active{
   -webkit-text-fill-color: transparent;
   margin:20px 0px;
 }
+#loading{
+  width: 20px;
+  height: 20px;
+  margin: 0px 30px;
+}

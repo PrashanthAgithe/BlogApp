@@ -45,3 +45,8 @@ label{
   color:whitesmoke;
   font-size: 20px;
 }
+#loading{
+  width: 20px;
+  height: 20px;
+  margin: 0px 20px;
+}

@@ -4,21 +4,26 @@ import {useForm} from 'react-hook-form'
 import axios from 'axios'
 import { useState } from 'react'
 import {useNavigate} from 'react-router-dom'
+import Loading from '../Loading/Loading'
 function SignUp() {
   let {register,handleSubmit,formState:{errors}}=useForm()
   let [err,seterr]=useState('');
   let navigate=useNavigate();
+  let [ispending,setispending]=useState(false)
   async function handlesubmitform(userobj){
+    setispending(true)
     if(userobj.userType=='user'){
       //make http post req
-      let res=await axios.post('http://localhost:4000/user-api/new-user',userobj)
+      let res=await axios.post('https://blogapp-wywh.onrender.com/user-api/new-user',userobj)
+      setispending(false)
       if(res.data.message==="User created"){
         navigate('/signin');
       }else{
         seterr(res.data.message);
       }
     }else{
-      let res=await axios.post('http://localhost:4000/author-api/new-user',userobj)
+      let res=await axios.post('https://blogapp-wywh.onrender.com/author-api/new-user',userobj)
+      setispending(false)
       if(res.data.message==="Author created"){
         navigate('/signin');
       }else{
@@ -65,7 +70,11 @@ function SignUp() {
             errors.email?.type=='required' && <p style={{color:'red'}}>Email Required</p>
           }
         </div>
-        <button type="submit">Register</button>
+        <button type="submit">
+          {
+            ispending?<Loading />:'Register'
+          }
+          </button>
       </form>
     </div>
   )
