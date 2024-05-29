@@ -29,7 +29,7 @@ ul{
   font-size: 46px;
   font-weight: 900;
    background: -webkit-linear-gradient(left,rgb(214, 79, 255),rgb(33, 222, 255),rgb(222, 60, 255),rgb(39, 255, 118));
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   margin:9px 10px;
 }
@@ -37,7 +37,7 @@ ul{
   font-size: 30px;
   font-weight: 500;
   background: -webkit-linear-gradient(left,rgb(235, 255, 11),rgb(255, 136, 24));
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   /* margin:9px 10px; */
 }
@@ -46,7 +46,7 @@ ul{
   font-size: 30px;
   font-weight: 500;
    background: -webkit-linear-gradient(left,rgb(72, 203, 247),rgb(0, 255, 221));
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   /* margin:9px 10px; */
 }

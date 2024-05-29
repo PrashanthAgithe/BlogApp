@@ -12,7 +12,7 @@ function SignUp() {
   let [ispending,setispending]=useState(false)
   async function handlesubmitform(userobj){
     setispending(true)
-    if(userobj.userType=='user'){
+    if(userobj.userType==='user'){
       //make http post req
       let res=await axios.post('https://blogapp-wywh.onrender.com/user-api/new-user',userobj)
       setispending(false)
@@ -47,27 +47,27 @@ function SignUp() {
           </div>
         </div>
         {
-            errors.userType?.type=='required' && <p style={{color:'red'}}>Please select User Type</p>
+            errors.userType?.type==='required' && <p style={{color:'red'}}>Please select User Type</p>
         }
         <div className='inputs'>
           <label for="username" className='inputlabel'>Username</label>
           <input type="text" name="username" id="username" placeholder='Enter username' {...register('username',{required:true})}/>
           {
-            errors.username?.type=='required' && <p style={{color:'red'}}>Username Required</p>
+            errors.username?.type==='required' && <p style={{color:'red'}}>Username Required</p>
           }
         </div>
         <div className='inputs'>
           <label for="password" className='inputlabel'>Password</label>
           <input type="password" name="password" id="password" placeholder='Enter password' {...register('password',{required:true})}/>
           {
-            errors.password?.type=='required' && <p style={{color:'red'}}>Password Required</p>
+            errors.password?.type==='required' && <p style={{color:'red'}}>Password Required</p>
           }
         </div>
         <div className='inputs' >
           <label for="email" className='inputlabel'>Email</label>
           <input type="text" name="email" id="email" placeholder='Enter email' {...register('email',{required:true})}/>
           {
-            errors.email?.type=='required' && <p style={{color:'red'}}>Email Required</p>
+            errors.email?.type==='required' && <p style={{color:'red'}}>Email Required</p>
           }
         </div>
         <button type="submit">

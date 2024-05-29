@@ -18,7 +18,7 @@ function Navbar() {
       </div>
       <div>
         <ul>
-          {(islogedin==false)?(
+          {(islogedin===false)?(
           <>
           <li><NavLink className='nav-item' to=''>Home</NavLink></li>
           <li><NavLink className='nav-item' to='signup'>SignUp</NavLink></li>

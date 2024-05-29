@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import {useForm} from 'react-hook-form'
 import { useSelector, useDispatch } from 'react-redux'
 import { resetState, userAuthorLoginThunk } from '../../redux/slices/userAuthorSlice'
@@ -44,20 +44,20 @@ function SignIn() {
           </div>
         </div>
           {
-            errors.userType?.type=='required' && <p style={{color:'red'}}>Please select User Type</p>
+            errors.userType?.type==='required' && <p style={{color:'red'}}>Please select User Type</p>
           }
         <div className='inputs'>
           <label for="username" className='inputlabel'>Username</label>
           <input type="text" name="username" id="username" placeholder='Enter username' {...register('username',{required:true})}/>
           {
-            errors.username?.type=='required' && <p style={{color:'red'}}>Username Required</p>
+            errors.username?.type==='required' && <p style={{color:'red'}}>Username Required</p>
           }
         </div>
         <div className='inputs'>
           <label for="password" className='inputlabel'>Password</label>
           <input type="password" name="password" id="password" placeholder='Enter password' {...register('password',{required:true})}/>
           {
-            errors.password?.type=='required' && <p style={{color:'red'}}>Password Required</p>
+            errors.password?.type==='required' && <p style={{color:'red'}}>Password Required</p>
           }
         </div>
         <button type="submit" className='login'>

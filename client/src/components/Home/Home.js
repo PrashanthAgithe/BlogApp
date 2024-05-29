@@ -17,7 +17,16 @@ function Home() {
   },[])
   return (
     <div className='home'>
-      <pre className='homepage'><IoMdLock />Please <NavLink  to='signin'>login</NavLink> to continue</pre>
+      <div class="homewelcome">
+        <h1>Welcome to My Blog </h1>
+        <p>Discover interesting articles on various topics.</p>
+      </div>
+      <pre className='homepage'>
+        <IoMdLock />Please <NavLink  to='signin' >Login</NavLink> To View Articles</pre>
+      <div class="homeabout">
+        <h2>About This Blog</h2>
+        <p>This blog is dedicated to educational content across various subjects.You'll find articles that inspire and educate.</p>
+      </div>
     </div>
   )
 }

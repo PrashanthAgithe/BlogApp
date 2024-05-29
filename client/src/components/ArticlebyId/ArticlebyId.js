@@ -64,7 +64,7 @@ function ArticlebyId() {
           currentUser.userType==='author' && 
           <div className='editdeletebtn'>
             <button className='edit btn' onClick={()=>edit(true)}><FaEdit /></button>
-            { state.status==true?
+            { state.status===true?
               <button className='delete btn' onClick={()=>deleteOrRestoreArticle()}><MdDelete /></button>:
               <button className='btn' onClick={()=>deleteOrRestoreArticle()}><MdRestore /></button>
             }

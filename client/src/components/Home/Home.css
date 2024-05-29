@@ -1,6 +1,41 @@
 .home{
   height: 70vh;
 }
+.homewelcome{
+  margin: 50px auto;
+  width:clamp(300px,60%,500px);
+  padding: 20px;
+  color: white;
+  border-radius: 12px;
+  background-color: rgb(41, 40, 40);
+  border: 1.6px solid whitesmoke;
+}
+.homeabout{
+  margin:60px auto 20px auto;
+  width:clamp(300px,80%,1000px);
+  padding: 20px;
+  color: white;
+  border-radius: 12px;
+  background-color: rgb(41, 40, 40);
+  border: 1.6px solid whitesmoke;
+}
+.homewelcome h1{
+  font-size: 2.9vw;
+  background: -webkit-linear-gradient(left,rgb(235, 255, 11),rgb(255, 136, 24));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 5px;
+}
+.homeabout h2{
+  font-size: 2.2vw;
+  background: -webkit-linear-gradient(left,rgb(72, 203, 247),rgb(0, 255, 221));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 5px;
+}
+.homeabout p{
+  text-align: center;
+}
 .homepage{
   display:flex;
   align-items: center;
@@ -8,8 +43,17 @@
   font-size: 40px;
   color:black;
 }
-@media screen and (max-width:530px) {
+@media screen and (max-width:700px) {
   .homepage{
+    font-size: 5.5vw;
+  }
+  .homewelcome h1{
     font-size: 6vw;
+  }
+  .homeabout h2{
+    font-size: 5vw;
+  }
+  .homeabout p{
+    text-align: left;
   }
 }

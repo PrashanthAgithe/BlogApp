@@ -62,7 +62,7 @@ button:active{
   font-size: 36px;
   font-weight: 700;
   background: -webkit-linear-gradient(left,rgb(235, 255, 11),rgb(255, 136, 24));
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   margin:20px 0px;
 }

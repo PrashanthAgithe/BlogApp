@@ -19,7 +19,7 @@
   font-size: 34px;
   font-weight: 800;
   background: -webkit-linear-gradient(left,rgba(102, 237, 24, 0.938),rgba(154, 236, 72, 0.911));
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   margin:7px;
 }
@@ -33,7 +33,7 @@
 }
 .articletitle{
   background: -webkit-linear-gradient(left,rgb(72, 203, 247),rgb(0, 255, 221));
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
