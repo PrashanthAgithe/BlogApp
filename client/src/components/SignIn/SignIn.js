@@ -24,11 +24,13 @@ function SignIn() {
       dispatch(resetState())
     }
   },[islogedin])
+  //changing errormsg to string is they are object
+  const errorMessage = typeof errMsg === 'object' ? JSON.stringify(errMsg) : errMsg
   return (
     <div className='signup'>
       <form onSubmit={handleSubmit(handlesubmitform)}>
         <h1 className='signuptitle'>Signin</h1>
-        {errorOccurred && <p style={{color:'red'}}>{errMsg}</p>}
+        {errorOccurred && <p style={{color:'red'}}>{errorMessage}</p>}
         <div className='usertype'>
           <div className='user'>
             <input type="radio" name="usertype" id="author" value={'author'} {...register('userType',{required:true})}/>

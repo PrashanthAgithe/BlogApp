@@ -14,7 +14,7 @@ function SignUp() {
     setispending(true)
     if(userobj.userType==='user'){
       //make http post req
-      let res=await axios.post('https://blogapp-wywh.onrender.com/user-api/new-user',userobj)
+      let res=await axios.post(`${process.env.REACT_APP_API_URL}/user-api/new-user`,userobj)
       setispending(false)
       if(res.data.message==="User created"){
         navigate('/signin');
@@ -22,7 +22,7 @@ function SignUp() {
         seterr(res.data.message);
       }
     }else{
-      let res=await axios.post('https://blogapp-wywh.onrender.com/author-api/new-user',userobj)
+      let res=await axios.post(`${process.env.REACT_APP_API_URL}/author-api/new-user`,userobj)
       setispending(false)
       if(res.data.message==="Author created"){
         navigate('/signin');

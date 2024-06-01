@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 import { createAxiosWithToken } from '../../axiosWithToken'
 import { useNavigate } from "react-router-dom";
 function AddArticle() {
-  let {register,handleSubmit}=useForm()
+  let {register,handleSubmit,formState:{errors}}=useForm()
   let [err, setErr] = useState("");
   let navigate = useNavigate();
   let {currentUser,islogedin}=useSelector(state=>state.userAuthorLoginReducer)
@@ -20,7 +20,7 @@ function AddArticle() {
     article.status = true;
     const axiosWithToken=createAxiosWithToken()
    //make HTTP post req
-   let res=await axiosWithToken.post('https://blogapp-wywh.onrender.com/author-api/article',article)
+   let res=await axiosWithToken.post(`${process.env.REACT_APP_API_URL}/author-api/article`,article)
    if(res.data.message==='article created'){
     navigate('/author-profile/articles')
    }else{
@@ -43,8 +43,17 @@ function AddArticle() {
       <form onSubmit={handleSubmit(postNewArticle)} >
       <div className="">
         <label htmlFor="title" className="">Title:</label>
-        <input type="text" className="" id="title" {...register("title")}
+        <input type="text" className="" id="title" {...register("title",{required:true,maxLength:18,minLength:4})}
         />
+        {
+          errors.title?.type==='required' && <p style={{color:'red'}}>Title Required</p>
+        }
+        {
+          errors.title?.type==='maxLength' && <p style={{color:'red'}}>Title should contain maximum of 18 characters</p>
+        }
+        {
+          errors.title?.type==='minLength' && <p style={{color:'red'}}>Title should contain atleast of 4 characters</p>
+        }
       </div>
       <div className="">
         <label htmlFor="category" className="">category:</label>
