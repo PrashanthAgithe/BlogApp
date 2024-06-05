@@ -9,6 +9,7 @@
   border-radius: 12px;
   background-color: rgb(41, 40, 40);
   border: 1.6px solid whitesmoke;
+  opacity: 85%;
 }
 .homeabout{
   margin:60px auto 20px auto;
@@ -18,6 +19,7 @@
   border-radius: 12px;
   background-color: rgb(41, 40, 40);
   border: 1.6px solid whitesmoke;
+  opacity: 85%;
 }
 .homewelcome h1{
   font-size: 2.9vw;
@@ -41,11 +43,11 @@
   align-items: center;
   justify-content: center;
   font-size: 40px;
-  color:black;
+  color:white;
 }
 @media screen and (max-width:700px) {
   .homepage{
-    font-size: 5.5vw;
+    font-size: 5.7vw;
   }
   .homewelcome h1{
     font-size: 6vw;

@@ -6,6 +6,7 @@
   border-radius: 12px;
   border: 1.8px solid white;
   max-height: 170px;
+  opacity: 95%;
 }
 .articlescontainer{
   display: grid;

@@ -22,7 +22,7 @@ function Home() {
         <p>Discover interesting articles on various topics.</p>
       </div>
       <pre className='homepage'>
-        <IoMdLock />Please <NavLink  to='signin' >Login</NavLink> To View Articles</pre>
+        <IoMdLock />Please <NavLink  to='signin' style={{color:'white'}} >Login</NavLink> To Continue</pre>
       <div class="homeabout">
         <h2>About This Blog</h2>
         <p>This blog is dedicated to educational content across various subjects.You'll find articles that inspire and educate.</p>

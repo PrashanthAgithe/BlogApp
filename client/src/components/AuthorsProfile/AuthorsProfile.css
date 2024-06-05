@@ -17,17 +17,18 @@
   font-size: 34px;
   font-weight: 800;
   background: -webkit-linear-gradient(left,rgba(102, 237, 24, 0.938),rgba(154, 236, 72, 0.911));
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   margin:7px;
 }
 .articleheadingdiv{
-  background-color: rgb(31, 31, 31);
+  background-color: rgb(40, 40, 40);
   width:235px;
   border-radius: 50px;
   border: 2px solid white;
   margin:20px auto;
   padding:8px;
+  opacity: 95%;
 }
 @media screen and (max-width:1060px){
   .authorsnav{

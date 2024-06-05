@@ -53,6 +53,7 @@ select{
   background-color: rgb(40, 40, 40);
   border-radius:12px;
   border: 1.8px solid white;
+  opacity: 97%;
 }
 .articletitle{
   background: -webkit-linear-gradient(left,rgb(72, 203, 247),rgb(0, 255, 221));

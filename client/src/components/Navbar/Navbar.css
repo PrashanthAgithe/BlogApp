@@ -2,8 +2,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  top:0;
+  z-index: 10;
   background-color: rgb(40, 40, 40);
   width:100%;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
 }
 li{
   list-style-type: none;
@@ -28,7 +32,8 @@ ul{
 .icon{
   font-size: 46px;
   font-weight: 900;
-   background: -webkit-linear-gradient(left,rgb(214, 79, 255),rgb(33, 222, 255),rgb(222, 60, 255),rgb(39, 255, 118));
+  background-image: url(https://wallpapercave.com/wp/wp9163625.jpg);
+  background-size: contain;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   margin:9px 10px;
