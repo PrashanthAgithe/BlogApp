@@ -20,9 +20,9 @@ function Navbar() {
         <ul>
           {(islogedin===false)?(
           <>
-          <li><NavLink className='nav-item' to=''>Home</NavLink></li>
-          <li><NavLink className='nav-item' to='signup'>SignUp</NavLink></li>
-          <li><NavLink className='nav-item' to='signin'>SignIn</NavLink></li>
+          <li><NavLink className='nav-item' to='' onClick={()=>{window.scrollTo({ top: 0, behavior: 'smooth' });}}>Home</NavLink></li>
+          <li><NavLink className='nav-item' to='signup' onClick={()=>{window.scrollTo({ top: 0, behavior: 'smooth' });}}>SignUp</NavLink></li>
+          <li><NavLink className='nav-item' to='signin' onClick={()=>{window.scrollTo({ top: 0, behavior: 'smooth' });}}>SignIn</NavLink></li>
           </>
           ):(
             <>

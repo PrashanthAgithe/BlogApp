@@ -5,7 +5,9 @@
   text-align: center;
 }
 body{
-  background-image: url(https://wallpapercave.com/wp/wp6705749.jpg);
+  background-image: url(https://images.hdqwalls.com/wallpapers/snowy-blue-mountains-4k-e5.jpg);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; 
+  background-attachment: fixed; 
+  background-position: center center;
 }
